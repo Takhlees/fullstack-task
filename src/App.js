@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useState } from 'react';
+import JobForm from './Components/jobForm';
+import JobList from './Components/jobList';
 
-function App() {
+const App = () => {
+  const [newJobId, setNewJobId] = useState(null);
+
+  const handleJobCreated = (id) => {
+    setNewJobId(id);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <h1>Job Manager</h1>
+      <JobForm onJobCreated={handleJobCreated} />
+      <JobList newJobId={newJobId} />
     </div>
   );
-}
+};
 
 export default App;
